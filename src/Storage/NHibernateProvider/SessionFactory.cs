@@ -2,14 +2,13 @@
 using System;
 using System.Reflection;
 
-namespace DataAccess
+namespace Storage
 {
-    public class Context : IDisposable
+    internal class SessionFactory : IDisposable
     {
-        private static ISessionFactory _sessionFactory;
-        private static ISession _session;
-
-        private static string GetConectionString()
+        private ISessionFactory _sessionFactory;
+        private ISession _session;
+        private string GetConectionString()
         {
             return "Data Source=" + Configuration.Server +
                    ";Initial Catalog=" + Configuration.Database +
@@ -18,12 +17,7 @@ namespace DataAccess
                    ";Connection Timeout=" + Configuration.Timeout;
         }
 
-        public static ISession Session
-        {
-            get { return OpenSession(); }
-        }
-
-        private static ISession OpenSession()
+        internal ISession Session()
         {
             if (_sessionFactory == null)
             {
@@ -43,12 +37,12 @@ namespace DataAccess
             }
             return _session;
         }
-
         public void Dispose()
         {
-            Session.Close();
-            Session.Dispose();
+            _session.Close();
+            _session.Dispose();
             _sessionFactory = null;
         }
+
     }
 }

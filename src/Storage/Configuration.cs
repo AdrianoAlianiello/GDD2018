@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace DataAccess
+namespace Storage
 {
     public static class Configuration
     {
