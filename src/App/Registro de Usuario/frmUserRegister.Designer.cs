@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Registro_de_Usuario
 {
-    partial class Form1
+    partial class frmUserRegister
     {
         /// <summary>
         /// Required designer variable.

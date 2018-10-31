@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleService.cs" />
+    <Compile Include="LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleService.cs" />
+    <Compile Include="SecurityAlgorithmService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
@@ -52,6 +54,10 @@
     <ProjectReference Include="..\Storage\Storage.csproj">
       <Project>{8fc1059f-9ff5-4758-972f-5f2d98a30ae5}</Project>
       <Name>Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Support\Support.csproj">
+      <Project>{39dbf409-2392-447e-818b-5c411c64d372}</Project>
+      <Name>Support</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

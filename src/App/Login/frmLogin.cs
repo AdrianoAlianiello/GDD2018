@@ -1,4 +1,5 @@
 ﻿
+using PalcoNet.Registro_de_Usuario;
 using Support;
 using System;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace PalcoNet.Login
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            _parent.Close();
+            _parent.CloseApp();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace PalcoNet.Login
                 {
                     //SERVICIO
                     _parent.LoadMenues();
-                    Close();
+                    _parent.CloseForm(this);
                 }
                 catch(Exception ex)
                 {
@@ -60,8 +61,19 @@ namespace PalcoNet.Login
 
         private void ShowMessage(string message)
         {
-            lblErrores.Visible = true;
-            lblErrores.Text = message;
+            tbErrores.Visible = true;
+            tbErrores.Text = message;
+        }
+
+        private void linkRegistrarUsuario_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegistrarUsuario();
+        }
+
+        private void RegistrarUsuario()
+        {
+            var registerForm = new frmUserRegister();
+            _parent.OpenChildForm(registerForm, this);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using Support;
 using System;
 using System.Reflection;
 

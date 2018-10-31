@@ -53,7 +53,6 @@
       <HintPath>..\Libraries\Remotion.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -64,7 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
     <Compile Include="EditableEntity\EditableEntity.cs" />
     <Compile Include="EditableEntity\IIdentificable.cs" />
     <Compile Include="NHibernateProvider\Context.cs" />
@@ -73,7 +71,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Maestra.hbm.xml" />
+    <Content Include="Mappings\Rol.hbm.xml" />
+    <Content Include="Mappings\Usuario.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support\Support.csproj">
+      <Project>{39DBF409-2392-447E-818B-5C411C64D372}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

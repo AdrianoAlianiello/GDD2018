@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Entities
 {
-	public class Maestra : MaestraBase
+	public class Rol : RolBase
 	{
 	}
 }

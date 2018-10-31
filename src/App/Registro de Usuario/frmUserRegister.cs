@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Registro_de_Usuario
 {
-    public partial class Form1 : Form
+    public partial class frmUserRegister : Form
     {
-        public Form1()
+        public frmUserRegister()
         {
             InitializeComponent();
         }
