@@ -8,3 +8,5 @@ src/App/bin/
 src/App/obj/
 src/Entities/bin/
 src/Entities/obj/
+src/Support/bin/
+src/Support/obj/
