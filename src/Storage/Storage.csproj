@@ -71,8 +71,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mappings\Rol.hbm.xml" />
-    <Content Include="Mappings\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Rol.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Usuario.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Support\Support.csproj">

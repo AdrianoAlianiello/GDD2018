@@ -1,17 +1,22 @@
 ﻿using Entities;
-using Storage;
 using Support;
 using System;
-using System.Linq;
 using static Support.Constants.Messages;
 
 namespace Services
 {
     public class LoginService
     {
+        private readonly UserService _userService;
+
+        public LoginService()
+        {
+            _userService = new UserService();
+        }
+
         public void DoLogin(string username, string password)
         {
-            var user = Context.Session.Query<Usuario>().Where(u => u.Username == username).First();
+            var user = _userService.GetByUsername(username);
             if (user == null)
                 throw new Exception(MSG_LOGIN_USER_NOT_FOUND);
             else if (!user.Activo)
@@ -44,13 +49,13 @@ namespace Services
         private void UpdateUserAttemps(Usuario user, int attempts)
         {
             user.CantIntentos = attempts;
-            Context.Session.SaveOrUpdate(user);
+            _userService.Update(user);
         }
 
         private void DisableUser(Usuario user)
         {
             user.Activo = false;
-            Context.Session.SaveOrUpdate(user);
+            _userService.Update(user);
         }
     }
 }

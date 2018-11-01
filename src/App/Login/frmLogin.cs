@@ -72,7 +72,7 @@ namespace PalcoNet.Login
 
         private void RegistrarUsuario()
         {
-            var registerForm = new frmUserRegister();
+            var registerForm = new frmUserRegister(_parent);
             _parent.OpenChildForm(registerForm, this);
         }
     }

@@ -9,5 +9,9 @@
         public const string MSG_LOGIN_USER_NOT_ACTIVE = "El usuario ingresado no se encuentra activo.";
         public const string MSG_LOGIN_USER_DISABLED = "La cantidad de intentos superó la máxima permitida. Se inhabilito el usuario.";
         public const string MSG_LOGIN_INCORRECT_PASSWORD = "La contraseña ingresada no es válida. Cant. intentos restantes: ";
+        //REGISTRO DE USUARIO
+        public const string MSG_USER_REGISTRATION_EXISTING_USERNAME = "El nombre de usuario ya existe. Por favor, ingrese uno nuevo.";
+        public const string MSG_USER_REGISTRATION_ERROR_SAVING_USER = "Ha ocurrido un error intentando guardar el usuario.";
+
     }
 }

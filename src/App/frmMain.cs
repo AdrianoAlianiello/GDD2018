@@ -43,6 +43,15 @@ namespace PalcoNet
             formToOpen.Show();
         }
 
+        public void BackToPreviousForm(Form callingForm)
+        {
+            if(_previousForm != null)
+            {
+                callingForm.Close();
+                _previousForm.Show();
+            }
+        }
+
         public void CloseForm(Form form)
         {
             form.Close();
