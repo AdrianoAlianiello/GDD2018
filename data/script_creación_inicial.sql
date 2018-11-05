@@ -1,4 +1,24 @@
---TABLAS
+-----------------------------------------------------------------------
+-- MASTER DB
+
+USE GD2C2018;
+GO;
+
+-----------------------------------------------------------------------
+-- DROP TABLES
+
+IF OBJECT_ID('dbo.Usuarios') IS NOT NULL
+BEGIN
+    DROP TABLE [dbo].[Usuarios];
+END;
+
+IF OBJECT_ID('dbo.Roles') IS NOT NULL
+BEGIN
+    DROP TABLE [dbo].[Roles];
+END;
+
+-----------------------------------------------------------------------
+-- CREATE TABLES
 
 CREATE TABLE [dbo].[Usuarios](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -26,7 +46,9 @@ CREATE TABLE [dbo].[Roles](
 ) ON [PRIMARY]
 GO
 
---CONSTRAINTS
+-----------------------------------------------------------------------
+-- CREATE CONSTRAINTS
+
 ALTER TABLE [dbo].[Usuarios]  WITH CHECK ADD  CONSTRAINT [FK_Usuarios_Roles] FOREIGN KEY([RolId])
 REFERENCES [dbo].[Roles] ([Id])
 GO
@@ -34,12 +56,19 @@ GO
 ALTER TABLE [dbo].[Usuarios] CHECK CONSTRAINT [FK_Usuarios_Roles]
 GO
 
---DATA
+-----------------------------------------------------------------------
+-- INSERT DATA IN TABLES
+
 INSERT INTO [dbo].[Roles] (Nombre, Activo)
 VALUES
 ('Administrativo', 1),
 ('Cliente', 1),
 ('Empresa', 1);
+GO
+
+INSERT INTO [dbo].[Usuarios] (Username, Password, CantIntentos, Activo, Temporal, RolId)
+VALUES
+('admin', 'e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7', 0, 1, 0, 1)
 GO
 
 

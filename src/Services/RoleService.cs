@@ -14,5 +14,10 @@ namespace Services
                 .Where(rol => rol.Activo && rol.Nombre == ROLE_CLIENT_NAME || rol.Nombre == ROLE_COMPANY_NAME)
                 .ToList();
         }
+
+        public Rol GetById(int id)
+        {
+            return Context.Session.Read<Rol>(id);
+        }
     }
 }

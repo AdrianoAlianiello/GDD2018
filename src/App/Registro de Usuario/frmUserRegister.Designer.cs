@@ -131,6 +131,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbUsuario);
             this.Name = "frmUserRegister";
+            this.Opacity = 0D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Usuario";

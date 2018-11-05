@@ -1,9 +1,12 @@
 ﻿using Entities;
 using PalcoNet.Login;
 using Services;
+using Support;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
+using static Support.Constants.Configuration;
 
 namespace PalcoNet
 {
@@ -16,13 +19,44 @@ namespace PalcoNet
             InitializeComponent();
         }
 
+        private void HideMenu()
+        {
+            foreach(ToolStripMenuItem item in mainMenu.Items)
+            {
+                item.Visible = false;
+                foreach (ToolStripItem childItem in item.DropDownItems)
+                    childItem.Visible = false;
+            }
+        }
+
+        private void LoadWallpaper()
+        {
+            BackgroundImage = Properties.Resources.TheatreWallpaper;
+            BackgroundImageLayout = ImageLayout.Stretch;
+        }
+
         public void LoadMenues()
         {
+            mainMenu.Visible = true;
+            LoadMenuesByFunctionalities();
+        }
 
+        private void LoadMenuesByFunctionalities()
+        {
+            var functionalities = CurrentUser.Functionalities;
+
+            if (functionalities.Contains(FUNCTIONALITY_CREATE_CLIENT))
+                ShowItemMenu(submenuClientesAlta);
+            if (functionalities.Contains(FUNCTIONALITY_MODIFY_CLIENT))
+                ShowItemMenu(submenuClientesModificacion);
+            if (functionalities.Contains(FUNCTIONALITY_REMOVE_CLIENT))
+                ShowItemMenu(submenuClientesBaja);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            LoadWallpaper();
+            HideMenu();
             ShowLogin();
         }
 
@@ -43,6 +77,13 @@ namespace PalcoNet
             formToOpen.Show();
         }
 
+        private void ShowItemMenu(ToolStripMenuItem menu)
+        {
+            if (!menu.GetCurrentParent().Visible)
+                menu.GetCurrentParent().Visible = true;
+            menu.Visible = true;
+        }
+
         public void BackToPreviousForm(Form callingForm)
         {
             if(_previousForm != null)
@@ -61,5 +102,6 @@ namespace PalcoNet
         {
             Close();
         }
+
     }
 }

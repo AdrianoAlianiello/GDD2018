@@ -1,5 +1,6 @@
 ﻿
 using PalcoNet.Registro_de_Usuario;
+using Services;
 using Support;
 using System;
 using System.Windows.Forms;
@@ -10,10 +11,12 @@ namespace PalcoNet.Login
     public partial class frmLogin : Form
     {
         private readonly frmMain _parent;
+        private readonly LoginService _loginService;
 
         public frmLogin(frmMain parent)
         {
             _parent = parent;
+            _loginService = new LoginService();
             InitializeComponent();
         }
 
@@ -33,7 +36,7 @@ namespace PalcoNet.Login
             {
                 try
                 {
-                    //SERVICIO
+                    _loginService.DoLogin(tbUsuario.Text, tbContrasenia.Text);
                     _parent.LoadMenues();
                     _parent.CloseForm(this);
                 }
