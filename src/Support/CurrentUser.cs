@@ -1,26 +1,36 @@
 ﻿using System.Security.Principal;
 using System.Threading;
-using static Support.Constants.Configuration;
 
 namespace Support
 {
     public static class CurrentUser
     {
         public static string Username { get; private set; }
-        public static string Role { get; private set; }
+        public static string[] Roles { get; private set; }
         public static string[] Functionalities { get; private set; }
 
-        public static void SetUser(string username, string role)
+        public static void SetUser(string username, string[] roles, string[] functionalities)
         {
             Username = username;
-            Role = role;
-            Functionalities = new string[1] { FUNCTIONALITY_CREATE_CLIENT };
+            Roles = roles;
+            Functionalities = functionalities;
             AuthenticateInThread();
         }
 
         private static void AuthenticateInThread()
         {
-            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), new string[] { Role });
+            if(!Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(Username), Roles);
+        }
+
+        public static void SetRoles(string[] roles)
+        {
+            Roles = roles;
+        }
+
+        public static void SetFunctionalities(string[] functionalities)
+        {
+            Functionalities = functionalities;
         }
     }
 }

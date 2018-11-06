@@ -2,6 +2,8 @@
 using Support;
 using System;
 using static Support.Constants.Messages;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Services
 {
@@ -9,11 +11,13 @@ namespace Services
     {
         private readonly UserService _userService;
         private readonly RoleService _roleService;
+        private readonly FunctionalityService _functionalityService;
 
         public LoginService()
         {
             _userService = new UserService();
             _roleService = new RoleService();
+            _functionalityService = new FunctionalityService();
         }
 
         public void DoLogin(string username, string password)
@@ -23,13 +27,18 @@ namespace Services
                 throw new Exception(MSG_LOGIN_USER_NOT_FOUND);
             else if (!user.Activo)
                 throw new Exception(MSG_LOGIN_USER_NOT_ACTIVE);
-            //else if (!user.RolId.HasValue)
-            //    throw new Exception(MSG_LOGIN_USER_WITHOUT_ROLE);
-                
+
             VerifyPassword(user, password);
 
-            var role = _roleService.GetById(1);
-            CurrentUser.SetUser(user.Username, role.Nombre);
+            var roles = _roleService.GetByUser(user.Id);
+            if (roles.Count == 0)
+                throw new Exception(MSG_LOGIN_USER_WITHOUT_ROLE);
+
+            var functionalities = _functionalityService.GetByRoles(roles.Select(r => r.Id).ToList());
+            if (functionalities.Count == 0)
+                throw new Exception(MSG_LOGIN_ROLE_WITHOUT_FUNCTIONALITY);
+
+            CurrentUser.SetUser(user.Username, roles.Select(r => r.Nombre).ToArray(), functionalities.Select(f => f.Detalle).ToArray());
         }
 
         private void VerifyPassword(Usuario user, string password)
@@ -51,6 +60,13 @@ namespace Services
             }
             else
                 UpdateUserAttemps(user, 0);
+        }
+
+        public void SelectRole(Rol role)
+        {
+            var functionalitiesRole = _functionalityService.GetByRoles(new List<int>() { role.Id });
+            CurrentUser.SetRoles(new string[1] { role.Nombre });
+            CurrentUser.SetFunctionalities(functionalitiesRole.Select(fr => fr.Detalle).ToArray());
         }
 
         private void UpdateUserAttemps(Usuario user, int attempts)

@@ -1,11 +1,8 @@
-﻿using Entities;
-using PalcoNet.Login;
-using Services;
+﻿using PalcoNet.Login;
 using Support;
 using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 using static Support.Constants.Configuration;
 
 namespace PalcoNet
@@ -27,6 +24,7 @@ namespace PalcoNet
                 foreach (ToolStripItem childItem in item.DropDownItems)
                     childItem.Visible = false;
             }
+            mainMenu.Visible = false;
         }
 
         private void LoadWallpaper()
@@ -47,10 +45,10 @@ namespace PalcoNet
 
             if (functionalities.Contains(FUNCTIONALITY_CREATE_CLIENT))
                 ShowItemMenu(mainMenuClientesAlta);
-            /*if (functionalities.Contains(FUNCTIONALITY_MODIFY_CLIENT))
-                ShowItemMenu(submenuClientesModificacion);
+            if (functionalities.Contains(FUNCTIONALITY_MODIFY_CLIENT))
+                ShowItemMenu(mainMenuClientesModificacion);
             if (functionalities.Contains(FUNCTIONALITY_REMOVE_CLIENT))
-                ShowItemMenu(submenuClientesBaja);*/
+                ShowItemMenu(mainMenuClientesBaja);
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -68,11 +66,17 @@ namespace PalcoNet
 
         public void OpenChildForm(Form formToOpen, Form callingForm = null)
         {
-            if(callingForm != null)
+            if (callingForm != null)
             {
                 _previousForm = callingForm;
                 _previousForm.Hide();
             }
+            else
+            {
+                if (MdiChildren.Length > 0)
+                    MdiChildren.First().Close();
+            }
+
             formToOpen.MdiParent = this;
             formToOpen.Show();
         }

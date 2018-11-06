@@ -37,8 +37,13 @@ namespace PalcoNet.Login
                 try
                 {
                     _loginService.DoLogin(tbUsuario.Text, tbContrasenia.Text);
-                    _parent.LoadMenues();
-                    _parent.CloseForm(this);
+                    if (CurrentUser.Roles.Length == 1)
+                    {
+                        _parent.LoadMenues();
+                        _parent.CloseForm(this);
+                    }
+                    else
+                        _parent.OpenChildForm(new frmRoleSelection(_parent));                   
                 }
                 catch(Exception ex)
                 {

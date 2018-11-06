@@ -32,6 +32,8 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.mainMenuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuClientesAlta = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuClientesModificacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenuClientesBaja = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,9 @@
             // mainMenuClientes
             // 
             this.mainMenuClientes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainMenuClientesAlta});
+            this.mainMenuClientesAlta,
+            this.mainMenuClientesModificacion,
+            this.mainMenuClientesBaja});
             this.mainMenuClientes.Name = "mainMenuClientes";
             this.mainMenuClientes.Size = new System.Drawing.Size(61, 20);
             this.mainMenuClientes.Text = "Clientes";
@@ -58,6 +62,18 @@
             this.mainMenuClientesAlta.Name = "mainMenuClientesAlta";
             this.mainMenuClientesAlta.Size = new System.Drawing.Size(180, 22);
             this.mainMenuClientesAlta.Text = "Alta";
+            // 
+            // mainMenuClientesModificacion
+            // 
+            this.mainMenuClientesModificacion.Name = "mainMenuClientesModificacion";
+            this.mainMenuClientesModificacion.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuClientesModificacion.Text = "Modificación";
+            // 
+            // mainMenuClientesBaja
+            // 
+            this.mainMenuClientesBaja.Name = "mainMenuClientesBaja";
+            this.mainMenuClientesBaja.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuClientesBaja.Text = "Baja";
             // 
             // frmMain
             // 
@@ -86,6 +102,8 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem mainMenuClientes;
         private System.Windows.Forms.ToolStripMenuItem mainMenuClientesAlta;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuClientesModificacion;
+        private System.Windows.Forms.ToolStripMenuItem mainMenuClientesBaja;
     }
 }
 

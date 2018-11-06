@@ -10,6 +10,7 @@
         public const string MSG_LOGIN_USER_DISABLED = "La cantidad de intentos superó la máxima permitida. Se inhabilito el usuario.";
         public const string MSG_LOGIN_INCORRECT_PASSWORD = "La contraseña ingresada no es válida. Cant. intentos restantes: ";
         public const string MSG_LOGIN_USER_WITHOUT_ROLE = "El usuario no tiene ningun rol asignado.";
+        public const string MSG_LOGIN_ROLE_WITHOUT_FUNCTIONALITY = "El rol asociado al usuario no posee ninguna funcionalidad asignada.";
 
         //USER REGISTRATION
         public const string MSG_USER_REGISTRATION_EXISTING_USERNAME = "El nombre de usuario ya existe. Por favor, ingrese uno nuevo.";
