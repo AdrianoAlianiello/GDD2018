@@ -46,11 +46,11 @@ namespace PalcoNet
             var functionalities = CurrentUser.Functionalities;
 
             if (functionalities.Contains(FUNCTIONALITY_CREATE_CLIENT))
-                ShowItemMenu(submenuClientesAlta);
-            if (functionalities.Contains(FUNCTIONALITY_MODIFY_CLIENT))
+                ShowItemMenu(mainMenuClientesAlta);
+            /*if (functionalities.Contains(FUNCTIONALITY_MODIFY_CLIENT))
                 ShowItemMenu(submenuClientesModificacion);
             if (functionalities.Contains(FUNCTIONALITY_REMOVE_CLIENT))
-                ShowItemMenu(submenuClientesBaja);
+                ShowItemMenu(submenuClientesBaja);*/
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -79,8 +79,9 @@ namespace PalcoNet
 
         private void ShowItemMenu(ToolStripMenuItem menu)
         {
-            if (!menu.GetCurrentParent().Visible)
-                menu.GetCurrentParent().Visible = true;
+            var parent = ((ToolStripDropDown)menu.GetCurrentParent()).OwnerItem;
+            if (!parent.Visible)
+                parent.Visible = true;
             menu.Visible = true;
         }
 
