@@ -6,7 +6,6 @@
 		<property name="Activo" column="activo" not-null="true" />
 		<property name="CantIntentos" column="cantintentos" not-null="true" />
 		<property name="Password" column="password" not-null="true" length="255" />
-		<property name="RolId" column="rolid" not-null="false" />
 		<property name="Temporal" column="temporal" not-null="true" />
 		<property name="Username" column="username" not-null="true" length="255" />
 	</class>

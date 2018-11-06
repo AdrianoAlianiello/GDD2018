@@ -80,5 +80,12 @@
       <Name>Support</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Cliente.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Empresa.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Funcionalidad.hbm.xml" />
+    <EmbeddedResource Include="Mappings\FuncionalidadRol.hbm.xml" />
+    <EmbeddedResource Include="Mappings\RolUsuario.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,7 +36,7 @@ namespace Services
             try
             {
                 user.Password = new SecurityAlgorithmService().Encrypt(user.Password);
-                user.RolId = role.Id;
+                //user.RolId = role.Id;
                 user.Temporal = false;
                 user.Activo = true;
                 user.CantIntentos = 0;

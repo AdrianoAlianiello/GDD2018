@@ -23,12 +23,12 @@ namespace Services
                 throw new Exception(MSG_LOGIN_USER_NOT_FOUND);
             else if (!user.Activo)
                 throw new Exception(MSG_LOGIN_USER_NOT_ACTIVE);
-            else if (!user.RolId.HasValue)
-                throw new Exception(MSG_LOGIN_USER_WITHOUT_ROLE);
+            //else if (!user.RolId.HasValue)
+            //    throw new Exception(MSG_LOGIN_USER_WITHOUT_ROLE);
                 
             VerifyPassword(user, password);
 
-            var role = _roleService.GetById(user.RolId.Value);
+            var role = _roleService.GetById(1);
             CurrentUser.SetUser(user.Username, role.Nombre);
         }
 

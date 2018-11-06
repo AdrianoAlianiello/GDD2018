@@ -42,9 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
+    <Compile Include="ClienteBase.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="EmpresaBase.cs" />
+    <Compile Include="Funcionalidad.cs" />
+    <Compile Include="FuncionalidadBase.cs" />
+    <Compile Include="FuncionalidadRol.cs" />
+    <Compile Include="FuncionalidadRolBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="RolBase.cs" />
+    <Compile Include="RolUsuario.cs" />
+    <Compile Include="RolUsuarioBase.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioBase.cs" />
   </ItemGroup>

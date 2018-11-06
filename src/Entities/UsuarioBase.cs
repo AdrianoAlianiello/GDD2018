@@ -10,7 +10,6 @@ namespace Entities
 		private bool _activo;
 		private int _cantIntentos;
 		private string _password;
-		private int? _rolId;
 		private bool _temporal;
 		private string _username;
 		[DataMember]
@@ -36,12 +35,6 @@ namespace Entities
 		{
 			get { return _password; }
 			set { _password = value; }
-		}
-		[DataMember]
-		public virtual int? RolId
-		{
-			get { return _rolId; }
-			set { _rolId = value; }
 		}
 		[DataMember]
 		public virtual bool Temporal

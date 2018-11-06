@@ -1,0 +1,9 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Entities" assembly="Entities">
+	<class name="RolUsuario" table="rolesusuarios" lazy="false">
+		<id name="Id" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="RolId" column="rolid" not-null="true" />
+		<property name="UsuarioId" column="usuarioid" not-null="true" />
+	</class>
+</hibernate-mapping>
