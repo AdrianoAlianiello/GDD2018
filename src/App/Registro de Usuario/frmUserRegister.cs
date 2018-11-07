@@ -1,4 +1,5 @@
 ﻿using Entities;
+using PalcoNet.Abm_Cliente;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Support.Constants.Configuration;
 
 namespace PalcoNet.Registro_de_Usuario
 {
@@ -42,6 +44,44 @@ namespace PalcoNet.Registro_de_Usuario
         private void Back()
         {
             _parent.BackToPreviousForm(this);
+        }
+
+        private void cboRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RoleChanged();
+        }
+
+        private void RoleChanged()
+        {
+            CleanContainer();
+            if (((Rol)cboRoles.SelectedItem).Nombre == ROLE_CLIENT_NAME)
+                ShowClientForm();
+            else if (((Rol)cboRoles.SelectedItem).Nombre == ROLE_COMPANY_NAME)
+                ShowCompanyForm();
+
+        }
+
+        private void CleanContainer()
+        {
+            container.Controls.Clear();
+        }
+
+        private void ShowCompanyForm()
+        {
+            var companyCtrl = new ctrlEmpresa();
+            container.Controls.Add(companyCtrl);
+
+        }
+
+        private void ShowClientForm()
+        {
+            var clientCtrl = new ctrlCliente();
+            container.Controls.Add(clientCtrl);
+        }
+
+        private void container_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

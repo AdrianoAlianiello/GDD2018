@@ -44,11 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abm Cliente\ctrlCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Abm Cliente\ctrlCliente.Designer.cs">
+      <DependentUpon>ctrlCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Cliente\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Cliente\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Empresa Espectaculo\ctrlEmpresa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Abm Empresa Espectaculo\ctrlEmpresa.Designer.cs">
+      <DependentUpon>ctrlEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Empresa Espectaculo\Form1.cs">
       <SubType>Form</SubType>
@@ -142,6 +154,12 @@
     <Compile Include="Registro de Usuario\frmUserRegister.Designer.cs">
       <DependentUpon>frmUserRegister.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Abm Cliente\ctrlCliente.resx">
+      <DependentUpon>ctrlCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Empresa Espectaculo\ctrlEmpresa.resx">
+      <DependentUpon>ctrlEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
