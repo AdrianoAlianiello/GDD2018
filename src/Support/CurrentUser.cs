@@ -26,6 +26,7 @@ namespace Support
         public static void SetRoles(string[] roles)
         {
             Roles = roles;
+            AuthenticateInThread();
         }
 
         public static void SetFunctionalities(string[] functionalities)
