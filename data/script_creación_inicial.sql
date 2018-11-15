@@ -7,6 +7,16 @@ GO
 -----------------------------------------------------------------------
 -- DROP TABLES
 
+IF OBJECT_ID('dbo.TarjetasCredito') IS NOT NULL
+BEGIN
+    DROP TABLE [dbo].[TarjetasCredito];
+END;
+
+IF OBJECT_ID('dbo.TiposTarjetasCredito') IS NOT NULL
+BEGIN
+    DROP TABLE [dbo].[TiposTarjetasCredito];
+END;
+
 IF OBJECT_ID('dbo.Empresas') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[Empresas];
@@ -107,6 +117,7 @@ CREATE TABLE [dbo].[Clientes](
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
 	[TipoDocumento] [nvarchar](255) NOT NULL,
+	[NroDocumento] [numeric](18,0) NOT NULL,
 	[Cuil] [numeric](18,0) NULL,
 	[Mail] [nvarchar](255) NOT NULL,
 	[Telefono] [numeric](18,0) NOT NULL,
@@ -115,6 +126,7 @@ CREATE TABLE [dbo].[Clientes](
 	[DomicilioPiso] [numeric](18,0) NOT NULL,
 	[DomicilioDepto] [nvarchar](255) NOT NULL,
 	[DomicilioCodPostal] [nvarchar](255) NOT NULL,
+	[DomicilioLocalidad] [nvarchar](255) NULL,
 	[FechaNacimiento] [datetime] NOT NULL,
 	[FechaCreacion] [datetime] NOT NULL,
 	[Activo] [bit] NOT NULL,
@@ -142,6 +154,31 @@ CREATE TABLE [dbo].[Empresas](
 	[Activa] [bit] NOT NULL,
 	[UsuarioId] [int] NOT NULL,
  CONSTRAINT [PK_Empresas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TiposTarjetasCredito](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_TiposTarjetasCredito] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TarjetasCredito](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Numero] [numeric](18,0) NOT NULL,
+	[NombreTitular] [nvarchar](255) NOT NULL,
+	[FechaVencimiento] [datetime] NOT NULL,
+	[Activa] [bit] NOT NULL,
+	[ClienteId] [int] NOT NULL,
+	[TipoId] [int] NOT NULL
+ CONSTRAINT [PK_TarjetasCredito] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -193,6 +230,20 @@ GO
 ALTER TABLE [dbo].[Empresas] CHECK CONSTRAINT [FK_Empresas_Usuarios]
 GO
 
+ALTER TABLE [dbo].[TarjetasCredito] WITH CHECK ADD  CONSTRAINT [FK_TarjetasCredito_Clientes] FOREIGN KEY([ClienteId])
+REFERENCES [dbo].[Clientes] ([Id])
+GO
+
+ALTER TABLE [dbo].[TarjetasCredito] CHECK CONSTRAINT [FK_TarjetasCredito_Clientes]
+GO
+
+ALTER TABLE [dbo].[TarjetasCredito] WITH CHECK ADD  CONSTRAINT [FK_TarjetasCredito_TiposTarjetasCredito] FOREIGN KEY([TipoId])
+REFERENCES [dbo].[TiposTarjetasCredito] ([Id])
+GO
+
+ALTER TABLE [dbo].[TarjetasCredito] CHECK CONSTRAINT [FK_TarjetasCredito_TiposTarjetasCredito]
+GO
+
 -----------------------------------------------------------------------
 -- INSERT DATA IN TABLES
 
@@ -222,6 +273,13 @@ GO
 
 INSERT INTO [dbo].[FuncionalidadesRoles] (RolId, FuncionalidadId)
 SELECT 1, Id FROM [dbo].[Funcionalidades]
+GO
+
+INSERT INTO [dbo].[TiposTarjetasCredito] (Descripcion)
+VALUES
+('Visa'),
+('Mastercard'),
+('American Express');
 GO
 
 

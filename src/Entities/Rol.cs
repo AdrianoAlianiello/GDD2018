@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Entities
 {
-	public class Rol : RolBase
+    public class Rol : RolBase
 	{
 	}
 }

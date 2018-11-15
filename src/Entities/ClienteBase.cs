@@ -10,17 +10,19 @@ namespace Entities
 		private int _id;
 		private bool _activo;
 		private string _apellido;
-		private decimal? _cuil;
+		private long? _cuil;
 		private string _domicilioCalle;
 		private string _domicilioCodPostal;
 		private string _domicilioDepto;
-		private decimal _domicilioNro;
-		private decimal _domicilioPiso;
+		private string _domicilioLocalidad;
+		private long _domicilioNro;
+		private long _domicilioPiso;
 		private DateTime _fechaCreacion;
 		private DateTime _fechaNacimiento;
 		private string _mail;
 		private string _nombre;
-		private decimal _telefono;
+		private long _nroDocumento;
+		private long _telefono;
 		private string _tipoDocumento;
 		private int _usuarioId;
 		[DataMember]
@@ -36,7 +38,7 @@ namespace Entities
 			set { _apellido = value; }
 		}
 		[DataMember]
-		public virtual decimal? Cuil
+		public virtual long? Cuil
 		{
 			get { return _cuil; }
 			set { _cuil = value; }
@@ -60,13 +62,19 @@ namespace Entities
 			set { _domicilioDepto = value; }
 		}
 		[DataMember]
-		public virtual decimal DomicilioNro
+		public virtual string DomicilioLocalidad
+		{
+			get { return _domicilioLocalidad; }
+			set { _domicilioLocalidad = value; }
+		}
+		[DataMember]
+		public virtual long DomicilioNro
 		{
 			get { return _domicilioNro; }
 			set { _domicilioNro = value; }
 		}
 		[DataMember]
-		public virtual decimal DomicilioPiso
+		public virtual long DomicilioPiso
 		{
 			get { return _domicilioPiso; }
 			set { _domicilioPiso = value; }
@@ -102,7 +110,13 @@ namespace Entities
 			set { _nombre = value; }
 		}
 		[DataMember]
-		public virtual decimal Telefono
+		public virtual long NroDocumento
+		{
+			get { return _nroDocumento; }
+			set { _nroDocumento = value; }
+		}
+		[DataMember]
+		public virtual long Telefono
 		{
 			get { return _telefono; }
 			set { _telefono = value; }

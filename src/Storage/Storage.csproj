@@ -87,5 +87,9 @@
     <EmbeddedResource Include="Mappings\FuncionalidadRol.hbm.xml" />
     <EmbeddedResource Include="Mappings\RolUsuario.hbm.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\TarjetaCredito.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TipoTarjetaCredito.hbm.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

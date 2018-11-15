@@ -9,12 +9,14 @@
 		<property name="DomicilioCalle" column="domiciliocalle" not-null="true" length="255" />
 		<property name="DomicilioCodPostal" column="domiciliocodpostal" not-null="true" length="255" />
 		<property name="DomicilioDepto" column="domiciliodepto" not-null="true" length="255" />
+		<property name="DomicilioLocalidad" column="domiciliolocalidad" not-null="false" length="255" />
 		<property name="DomicilioNro" column="domicilionro" not-null="true" />
 		<property name="DomicilioPiso" column="domiciliopiso" not-null="true" />
 		<property name="FechaCreacion" column="fechacreacion" not-null="true" />
 		<property name="FechaNacimiento" column="fechanacimiento" not-null="true" />
 		<property name="Mail" column="mail" not-null="true" length="255" />
 		<property name="Nombre" column="nombre" not-null="true" length="255" />
+		<property name="NroDocumento" column="nrodocumento" not-null="true" />
 		<property name="Telefono" column="telefono" not-null="true" />
 		<property name="TipoDocumento" column="tipodocumento" not-null="true" length="255" />
 		<property name="UsuarioId" column="usuarioid" not-null="true" />

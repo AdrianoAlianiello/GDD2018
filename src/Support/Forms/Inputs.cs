@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Support.Forms
@@ -29,15 +25,37 @@ namespace Support.Forms
             tb.KeyPress += new KeyPressEventHandler(TbOnlyNotNumeric);
         }
 
+        public static void NotSeparated(TextBox tb)
+        {
+            tb.KeyPress += new KeyPressEventHandler(TbNotSeparated);
+        }
+
+        public static void LetterOrDigit(TextBox tb)
+        {
+            tb.KeyPress += new KeyPressEventHandler(TbLetterOrDigit);
+        }
+
+        private static void TbLetterOrDigit(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private static void TbNotSeparated(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSeparator(e.KeyChar))
+                e.Handled = true;
+        }
+
         private static void TbOnlyNotNumeric(object sender, KeyPressEventArgs e)
         {
-            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar) && !char.IsPunctuation(e.KeyChar))
                 e.Handled = true;
         }
 
         private static void TbOnlyNumericDecimal(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
                 e.Handled = true;
 
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
@@ -46,7 +64,7 @@ namespace Support.Forms
 
         private static void TbOnlyNumericInt(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
 

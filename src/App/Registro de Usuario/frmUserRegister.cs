@@ -17,6 +17,7 @@ namespace PalcoNet.Registro_de_Usuario
     public partial class frmUserRegister : Form
     {
         private readonly frmMain _parent;
+        private ctrlCliente _ctrCliente;
 
         public frmUserRegister(frmMain parent)
         {
@@ -75,13 +76,18 @@ namespace PalcoNet.Registro_de_Usuario
 
         private void ShowClientForm()
         {
-            var clientCtrl = new ctrlCliente();
-            container.Controls.Add(clientCtrl);
+            _ctrCliente = new ctrlCliente();
+            container.Controls.Add(_ctrCliente);
         }
 
         private void container_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            _ctrCliente.Save();
         }
     }
 }

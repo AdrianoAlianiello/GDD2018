@@ -1,0 +1,12 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Entities" assembly="Entities">
+	<class name="TarjetaCredito" table="tarjetascredito" lazy="false">
+		<id name="Id" column="Id" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="Activa" column="activa" not-null="true" />
+		<property name="FechaVencimiento" column="fechavencimiento" not-null="true" />
+		<property name="NombreTitular" column="nombretitular" not-null="true" length="255" />
+		<property name="Numero" column="numero" not-null="true" />
+		<property name="TipoId" column="tipoid" not-null="true" />
+	</class>
+</hibernate-mapping>

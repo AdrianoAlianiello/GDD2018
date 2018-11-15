@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteBase.cs" />
+    <Compile Include="DTOs\ClienteDTO.cs" />
+    <Compile Include="DTOs\TarjetaCreditoDTO.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EmpresaBase.cs" />
     <Compile Include="Funcionalidad.cs" />
@@ -55,8 +57,13 @@
     <Compile Include="RolBase.cs" />
     <Compile Include="RolUsuario.cs" />
     <Compile Include="RolUsuarioBase.cs" />
+    <Compile Include="TarjetaCredito.cs" />
+    <Compile Include="TarjetaCreditoBase.cs" />
+    <Compile Include="TipoTarjetaCredito.cs" />
+    <Compile Include="TipoTarjetaCreditoBase.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioBase.cs" />
+    <Compile Include="Views\TarjetaView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
