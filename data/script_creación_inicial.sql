@@ -294,7 +294,7 @@ GO
 
 CREATE TABLE [dbo].[EspectaculosHorarios](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[FechaNacimiento] [datetime] NOT NULL,
+	[Fecha] [datetime] NOT NULL,
 	[EspectaculoId] [int] NOT NULL,
  CONSTRAINT [PK_EspectaculosHorarios] PRIMARY KEY CLUSTERED 
 (
