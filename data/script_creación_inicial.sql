@@ -345,7 +345,7 @@ CREATE TABLE [dbo].[Entradas](
 	[Nombre] [nvarchar](255) NOT NULL,
 	[Apellido] [nvarchar](255) NOT NULL,
 	[UbicacionId] [int] NOT NULL,
-	[CompraId] [int] NOT NULL,
+	[CompraId] [int] NULL,
 	[PublicacionId] [int] NOT NULL,
 	[EspectaculoId] [int] NOT NULL
  CONSTRAINT [PK_Entradas] PRIMARY KEY CLUSTERED 
