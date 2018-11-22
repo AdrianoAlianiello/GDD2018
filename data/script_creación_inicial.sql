@@ -250,7 +250,7 @@ CREATE TABLE [dbo].[Ubicaciones](
 	[Precio] [numeric](18,0) NOT NULL,
 	[Numerada] [bit] NOT NULL,
 	[TipoId] [int] NOT NULL,
-	[CantPuntos] [numeric](18,0) NOT NULL,
+	[CantPuntos] [numeric](18,0) NULL,
  CONSTRAINT [PK_Ubicaciones] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -444,7 +444,7 @@ CREATE TABLE [dbo].[Empresas](
 	[RazonSocial] [nvarchar](255) NOT NULL,
 	[Cuit] [nvarchar](255) NOT NULL,
 	[Mail] [nvarchar](50) NOT NULL,
-	[Telefono] [numeric](18,0) NOT NULL,
+	[Telefono] [numeric](18,0) NULL,
 	[DomicilioCalle] [nvarchar](50) NOT NULL,
 	[DomicilioNro] [numeric](18,0) NOT NULL,
 	[DomicilioPiso] [numeric](18,0) NULL,
@@ -452,7 +452,7 @@ CREATE TABLE [dbo].[Empresas](
 	[DomicilioCodPostal] [nvarchar](50) NOT NULL,
 	[Ciudad] [nvarchar](255) NULL,
 	[FechaCreacion] [datetime] NOT NULL,
-	[Activa] [bit] NOT NULL,
+	[Activa] [bit] Default(1) NOT NULL,
 	[UsuarioId] [int] NULL,
  CONSTRAINT [PK_Empresas] PRIMARY KEY CLUSTERED 
 (
