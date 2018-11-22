@@ -165,7 +165,7 @@ GO
 CREATE TABLE [dbo].[EstadosPublicaciones](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Descripcion] [nvarchar](255) NOT NULL,
-	[Peso] [numeric](18,0) NOT NULL
+	[Peso] [numeric](18,0) NULL
  CONSTRAINT [PK_EstadosPublicaciones] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
