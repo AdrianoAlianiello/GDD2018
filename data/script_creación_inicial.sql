@@ -273,7 +273,7 @@ CREATE TABLE [dbo].[Espectaculos](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Descripcion] [nvarchar](255) NOT NULL,
 	[Direccion] [nvarchar](255) NULL,
-	[RubroId] [int] NOT NULL,
+	[RubroId] [int] NULL,
  CONSTRAINT [PK_Espectaculos] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -453,7 +453,7 @@ CREATE TABLE [dbo].[Empresas](
 	[Ciudad] [nvarchar](255) NULL,
 	[FechaCreacion] [datetime] NOT NULL,
 	[Activa] [bit] NOT NULL,
-	[UsuarioId] [int] NOT NULL,
+	[UsuarioId] [int] NULL,
  CONSTRAINT [PK_Empresas] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
