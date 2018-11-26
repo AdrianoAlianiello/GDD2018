@@ -61,7 +61,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnEliminarTarjeta = new System.Windows.Forms.Button();
-            this.btnModificarTarjeta = new System.Windows.Forms.Button();
             this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.dgvTarjetas = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
@@ -434,7 +433,6 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnEliminarTarjeta);
-            this.groupBox4.Controls.Add(this.btnModificarTarjeta);
             this.groupBox4.Controls.Add(this.btnAgregarTarjeta);
             this.groupBox4.Controls.Add(this.dgvTarjetas);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -455,26 +453,13 @@
             this.btnEliminarTarjeta.BackColor = System.Drawing.Color.Gainsboro;
             this.btnEliminarTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTarjeta.Location = new System.Drawing.Point(471, 103);
+            this.btnEliminarTarjeta.Location = new System.Drawing.Point(472, 69);
             this.btnEliminarTarjeta.Name = "btnEliminarTarjeta";
             this.btnEliminarTarjeta.Size = new System.Drawing.Size(123, 29);
             this.btnEliminarTarjeta.TabIndex = 14;
             this.btnEliminarTarjeta.Text = "Eliminar";
             this.btnEliminarTarjeta.UseVisualStyleBackColor = false;
-            // 
-            // btnModificarTarjeta
-            // 
-            this.btnModificarTarjeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificarTarjeta.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnModificarTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarTarjeta.Location = new System.Drawing.Point(472, 68);
-            this.btnModificarTarjeta.Name = "btnModificarTarjeta";
-            this.btnModificarTarjeta.Size = new System.Drawing.Size(123, 29);
-            this.btnModificarTarjeta.TabIndex = 13;
-            this.btnModificarTarjeta.Text = "Modificar";
-            this.btnModificarTarjeta.UseVisualStyleBackColor = false;
+            this.btnEliminarTarjeta.Click += new System.EventHandler(this.btnEliminarTarjeta_Click);
             // 
             // btnAgregarTarjeta
             // 
@@ -489,6 +474,7 @@
             this.btnAgregarTarjeta.TabIndex = 12;
             this.btnAgregarTarjeta.Text = "Agregar";
             this.btnAgregarTarjeta.UseVisualStyleBackColor = false;
+            this.btnAgregarTarjeta.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
             // dgvTarjetas
             // 
@@ -559,7 +545,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvTarjetas;
         private System.Windows.Forms.Button btnEliminarTarjeta;
-        private System.Windows.Forms.Button btnModificarTarjeta;
         private System.Windows.Forms.Button btnAgregarTarjeta;
     }
 }

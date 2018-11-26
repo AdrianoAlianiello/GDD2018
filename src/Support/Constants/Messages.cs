@@ -33,5 +33,7 @@
         public const string MSG_CLIENT_ADDRESS_CITY_EMPTY = "La localidad de domicilio es obligatoria.";
         public const string MSG_CLIENT_CREDIT_CARD_EMPTY = "Se debe registrar al menos una tarjeta de crédito.";
         public const string MSG_CLIENT_MAIL_INVALID = "El mail ingresado no es válido.";
+        public const string MSG_CLIENT_DUPLICATED = "El tipo y número de documento o el CUIL ingresado ya se encuentran registrados en la base de datos.";
+        public const string MSG_CLIENT_SAVE_ERROR = "Ocurrió un error guardando al cliente.";
     }
 }
