@@ -35,5 +35,12 @@
         public const string MSG_CLIENT_MAIL_INVALID = "El mail ingresado no es válido.";
         public const string MSG_CLIENT_DUPLICATED = "El tipo y número de documento o el CUIL ingresado ya se encuentran registrados en la base de datos.";
         public const string MSG_CLIENT_SAVE_ERROR = "Ocurrió un error guardando al cliente.";
+
+        //CREDIT CARD
+        public const string MSG_CREDIT_CARD_NAME_EMPTY = "El titular de la tarjeta es obligatorio.";
+        public const string MSG_CREDIT_CARD_NUMBER_EMPTY = "El número de la tarjeta es obligatorio.";
+        public const string MSG_CREDIT_CARD_EXPIRATION_DATE_EMPTY = "La fecha de vencimiento de la tarjeta es obligatoria.";
+        public const string MSG_CREDIT_CARD_EXISTING = "Ya existe un número de tarjeta igual para el cliente.";
+        public const string MSG_CREDIT_CARD_INVALID_LENGTH = "El número de tarjeta debe ser 16 dígitos.";
     }
 }

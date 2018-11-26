@@ -25,7 +25,7 @@ namespace Services
             var currentCards = Context.Session.Query<TarjetaCredito>().Where(tc => tc.ClienteId == cards.First().Tarjeta.ClienteId && tc.Activa);
             foreach(var card in currentCards)
             {
-                if(cards.Where(c => c.Tarjeta.Numero == card.Numero && c.Tarjeta.TipoId == card.TipoId).Count() == 0)
+                if(cards.Where(c => c.Tarjeta.Numero == card.Numero).Count() == 0)
                 {
                     card.Activa = false;
                     Context.Session.SaveOrUpdate(card);

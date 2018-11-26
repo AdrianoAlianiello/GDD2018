@@ -26,6 +26,10 @@ namespace Services
                 try
                 {
                     Context.Session.SaveOrUpdate(client.Cliente);
+
+                    foreach (var card in client.Tarjetas)
+                        card.Tarjeta.ClienteId = client.Cliente.Id;
+
                     _creditCardService.Save(client.Tarjetas);
                     transaction.Commit();
                 }
