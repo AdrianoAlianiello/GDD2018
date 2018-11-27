@@ -13,5 +13,11 @@ namespace Support.Forms
         {
             MessageBox.Show(text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        public static void ShowInfo(string text)
+        {
+            MessageBox.Show(text, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
     }
 }

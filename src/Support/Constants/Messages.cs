@@ -15,6 +15,10 @@
         //USER REGISTRATION
         public const string MSG_USER_REGISTRATION_EXISTING_USERNAME = "El nombre de usuario ya existe. Por favor, ingrese uno nuevo.";
         public const string MSG_USER_REGISTRATION_ERROR_SAVING_USER = "Ha ocurrido un error intentando guardar el usuario.";
+        public const string MSG_USER_REGISTRATION_ERROR_SAVING_CLIENT = "Ha ocurrido un error intentando crear al nuevo cliente.";
+        public const string MSG_USER_REGISTRATION_USERNAME_EMPTY = "El usuario es obligatorio.";
+        public const string MSG_USER_REGISTRATION_PASSWORD_EMPTY = "La contraseña es obligatoria.";
+        public const string MSG_USER_REGISTRATION_SAVE_CLIENT_SUCESS = "El cliente fue dado de alta exitosamente.";
 
         //CLIENT
         public const string MSG_CLIENT_NAME_EMPTY = "El nombre es obligatorio.";

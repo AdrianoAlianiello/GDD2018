@@ -505,7 +505,8 @@ GO
 CREATE TABLE [dbo].[TarjetasCredito](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Numero] [numeric](18,0) NOT NULL,
-	[FechaVto] [datetime] NOT NULL,
+	[NombreTitular] [nvarchar](255) NOT NULL,
+	[FechaVencimiento] [datetime] NOT NULL,
 	[Activa] [bit] NOT NULL,
 	[ClienteId] [int] NOT NULL,
 	[TipoId] [int] NOT NULL

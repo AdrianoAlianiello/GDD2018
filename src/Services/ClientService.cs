@@ -17,20 +17,12 @@ namespace Services
         }
 
         public void Save(ClienteDTO client)
-        {
-            if (client.Cliente.IsNew())
-                VerifyIsExist(client.Cliente);
-
+        {                
             using(var transaction = Context.Session.BeginTransaction())
             {
                 try
                 {
-                    Context.Session.SaveOrUpdate(client.Cliente);
-
-                    foreach (var card in client.Tarjetas)
-                        card.Tarjeta.ClienteId = client.Cliente.Id;
-
-                    _creditCardService.Save(client.Tarjetas);
+                    SaveClientAndCreditCards(client);
                     transaction.Commit();
                 }
                 catch(Exception ex)
@@ -39,6 +31,36 @@ namespace Services
                     throw new Exception(MSG_CLIENT_SAVE_ERROR, ex.InnerException);
                 }
             }
+        }
+
+        private void SaveClientAndCreditCards(ClienteDTO client)
+        {
+            if(client.Cliente.IsNew())
+            {
+                client.Cliente.Activo = true;
+                client.Cliente.FechaCreacion = DateTime.Now;
+            }
+
+            Context.Session.SaveOrUpdate(client.Cliente);
+
+            foreach (var card in client.Tarjetas)
+                card.Tarjeta.ClienteId = client.Cliente.Id;
+
+            _creditCardService.Save(client.Tarjetas);
+        }
+
+        public void Register(ClienteDTO client)
+        {
+            try
+            {
+                VerifyIsExist(client.Cliente);
+                SaveClientAndCreditCards(client);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MSG_USER_REGISTRATION_ERROR_SAVING_CLIENT);
+            }
+
         }
 
         private void VerifyIsExist(Cliente cliente)

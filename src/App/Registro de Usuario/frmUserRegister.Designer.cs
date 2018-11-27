@@ -31,7 +31,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbContrasenia = new System.Windows.Forms.TextBox();
             this.cboRoles = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
@@ -73,14 +73,14 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Contraseña";
             // 
-            // textBox1
+            // tbContrasenia
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(253, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 22);
-            this.textBox1.TabIndex = 7;
+            this.tbContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbContrasenia.Location = new System.Drawing.Point(253, 43);
+            this.tbContrasenia.Name = "tbContrasenia";
+            this.tbContrasenia.Size = new System.Drawing.Size(178, 22);
+            this.tbContrasenia.TabIndex = 7;
             // 
             // cboRoles
             // 
@@ -123,11 +123,10 @@
             // container
             // 
             this.container.Location = new System.Drawing.Point(16, 83);
-            this.container.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.container.Margin = new System.Windows.Forms.Padding(2);
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(653, 541);
             this.container.TabIndex = 12;
-            this.container.Paint += new System.Windows.Forms.PaintEventHandler(this.container_Paint);
             // 
             // btnGuardar
             // 
@@ -164,7 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(681, 679);
+            this.ClientSize = new System.Drawing.Size(677, 675);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnGuardar);
@@ -173,7 +172,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboRoles);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbContrasenia);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -193,7 +192,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbContrasenia;
         private System.Windows.Forms.ComboBox cboRoles;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnVolver;

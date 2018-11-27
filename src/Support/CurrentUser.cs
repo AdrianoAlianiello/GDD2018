@@ -1,5 +1,7 @@
 ﻿using System.Security.Principal;
 using System.Threading;
+using System.Linq;
+using static Support.Constants.Configuration;
 
 namespace Support
 {
@@ -32,6 +34,11 @@ namespace Support
         public static void SetFunctionalities(string[] functionalities)
         {
             Functionalities = functionalities;
+        }
+
+        public static bool IsAdministrator()
+        {
+            return Thread.CurrentPrincipal.Identity.IsAuthenticated && Roles != null && Roles.Contains(ROLE_ADMINISTRATOR_NAME);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Services
 
         public Usuario GetByUsername(string username)
         {
-            return Context.Session.Query<Usuario>().Where(u => u.Username == username).First();
+            return Context.Session.Query<Usuario>().Where(u => u.Username == username).FirstOrDefault();
         }
 
         public void CreateUser(Usuario user, List<Rol> roles)

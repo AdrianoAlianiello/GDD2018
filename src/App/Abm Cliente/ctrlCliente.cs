@@ -19,6 +19,11 @@ namespace PalcoNet.Abm_Cliente
         private readonly frmMain _parent;
         private readonly ClientService _clientService;
 
+        public ClienteDTO GetCurrentClient()
+        {
+            return _clienteDTO;
+        }
+
         public ctrlCliente(frmMain parent, ClienteDTO clienteDTO = null)
         {
             InitializeComponent();
@@ -149,12 +154,23 @@ namespace PalcoNet.Abm_Cliente
                 try
                 {
                     BindFormData();
+                    _clientService.Save(_clienteDTO);
                 }
                 catch (Exception ex)
                 {
                     Alerts.ShowWarning(ex.Message);
                 }
             }
+        }
+
+        public bool PrepareSave()
+        {
+            if (ValidateInputs())
+            {
+                BindFormData();
+                return true;
+            }
+            return false;
         }
 
         private void BindFormData()

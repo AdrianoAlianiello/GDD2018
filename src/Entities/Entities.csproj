@@ -45,6 +45,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteBase.cs" />
     <Compile Include="DTOs\ClienteDTO.cs" />
+    <Compile Include="DTOs\ClienteRegistracionDTO.cs" />
     <Compile Include="DTOs\TarjetaCreditoDTO.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EmpresaBase.cs" />
