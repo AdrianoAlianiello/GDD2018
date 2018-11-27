@@ -410,7 +410,7 @@ CREATE TABLE [dbo].[Clientes](
 	[NroDocumento] [numeric](18,0) NOT NULL,
 	[Cuil] [numeric](18,0) NULL,
 	[Mail] [nvarchar](255) NOT NULL,
-	[Telefono] [numeric](18,0) NOT NULL,
+	[Telefono] [numeric](18,0) NULL,
 	[DomicilioCalle] [nvarchar](255) NOT NULL,
 	[DomicilioNro] [numeric](18,0) NOT NULL,
 	[DomicilioPiso] [numeric](18,0) NOT NULL,
@@ -420,7 +420,7 @@ CREATE TABLE [dbo].[Clientes](
 	[FechaNacimiento] [datetime] NOT NULL,
 	[FechaCreacion] [datetime] NOT NULL,
 	[Activo] [bit] NOT NULL,
-	[UsuarioId] [int] NOT NULL,
+	[UsuarioId] [int] NULL,
  CONSTRAINT [PK_Clientes] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -467,8 +467,8 @@ CREATE TABLE [dbo].[Publicaciones](
 	[Descripcion] [nvarchar](255) NOT NULL,
 	[FechaInicio] [Datetime] NOT NULL,
 	[EstadoId] [int] NOT NULL,
-	[GradoId] [int] NOT NULL,
-	[UsuarioId] [int] NOT NULL,
+	[GradoId] [int] NULL,
+	[UsuarioId] [int] NULL,
 	[EspectaculoHorarioId] [int] NOT NULL,
 	[EmpresaId] [int] NOT NULL,
  CONSTRAINT [PK_Publicaciones] PRIMARY KEY CLUSTERED 
@@ -795,4 +795,7 @@ VALUES
 ('American Express');
 GO
 
-
+INSERT INTO [dbo].[EstadosPublicaciones] (Descripcion)
+VALUES
+('Publicada');
+GO
