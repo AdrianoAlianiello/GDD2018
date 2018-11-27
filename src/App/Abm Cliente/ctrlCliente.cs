@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Entities.DTOs;
 using Entities.Views;
+using Services;
 using Support;
 using Support.Forms;
 using System;
@@ -15,10 +16,14 @@ namespace PalcoNet.Abm_Cliente
     public partial class ctrlCliente : UserControl
     {
         private readonly ClienteDTO _clienteDTO = new ClienteDTO();
+        private readonly frmMain _parent;
+        private readonly ClientService _clientService;
 
-        public ctrlCliente(ClienteDTO clienteDTO = null)
+        public ctrlCliente(frmMain parent, ClienteDTO clienteDTO = null)
         {
             InitializeComponent();
+            _clientService = new ClientService();
+            _parent = parent;
 
             if (clienteDTO != null)
             {
@@ -52,8 +57,8 @@ namespace PalcoNet.Abm_Cliente
                 column.Visible = false;
             ShowColumn("TipoNombre", "Emisora");
             ShowColumn("Numero", "Numero");
-            ShowColumn("NombreTitular", "Titular");
-            ShowColumn("FechaVencimiento", "Vencimiento", "MM/yy");
+            ShowColumn("Titular", "Titular");
+            ShowColumn("FechaVto", "Vencimiento", "MM/yy");
             EnableOrDisableTarjetasButtons();
         }
 
@@ -83,13 +88,9 @@ namespace PalcoNet.Abm_Cliente
 
         private void EnableOrDisableTarjetasButtons()
         {
-            btnModificarTarjeta.Enabled = false;
             btnEliminarTarjeta.Enabled = false;
             if(dgvTarjetas.Rows.Count > 0)
-            {
-                btnModificarTarjeta.Enabled = true;
                 btnEliminarTarjeta.Enabled = true;
-            }
         }
 
         private void ctrlCliente_Load(object sender, EventArgs e)
@@ -208,11 +209,35 @@ namespace PalcoNet.Abm_Cliente
             return true;
         }
 
-        public bool Validate(bool result, string msgWarning)
+        private bool Validate(bool result, string msgWarning)
         {
             if (!result)
                 Alerts.ShowWarning(msgWarning);
             return !result;
+        }
+
+        private void btnAgregarTarjeta_Click(object sender, EventArgs e)
+        {
+            _parent.OpenDialogForm(new frmCreditCard(_parent, this));
+        }
+
+        private void btnEliminarTarjeta_Click(object sender, EventArgs e)
+        {
+            var cardSelected = (TarjetaView)dgvTarjetas.SelectedRows[0].DataBoundItem;
+            var toDelete = _clienteDTO.Tarjetas.Find(t => t.Tarjeta.TipoId == cardSelected.TipoId && t.Tarjeta.Numero == cardSelected.Numero);
+            _clienteDTO.Tarjetas.Remove(toDelete);
+            ShowTarjetas();
+        }
+
+        public void AddCreditCard(TarjetaCreditoDTO card)
+        {
+            _clienteDTO.Tarjetas.Add(card);
+            ShowTarjetas();
+        }
+
+        public bool VerifyIsCreditCardExist(TarjetaCreditoDTO card)
+        {
+            return _clienteDTO.Tarjetas.Where(t => t.Tarjeta.Numero == card.Tarjeta.Numero).Count() > 0;
         }
     }
 }

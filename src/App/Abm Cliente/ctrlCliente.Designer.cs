@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +63,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnEliminarTarjeta = new System.Windows.Forms.Button();
-            this.btnModificarTarjeta = new System.Windows.Forms.Button();
             this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.dgvTarjetas = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
@@ -434,7 +435,6 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnEliminarTarjeta);
-            this.groupBox4.Controls.Add(this.btnModificarTarjeta);
             this.groupBox4.Controls.Add(this.btnAgregarTarjeta);
             this.groupBox4.Controls.Add(this.dgvTarjetas);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -455,26 +455,13 @@
             this.btnEliminarTarjeta.BackColor = System.Drawing.Color.Gainsboro;
             this.btnEliminarTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTarjeta.Location = new System.Drawing.Point(471, 103);
+            this.btnEliminarTarjeta.Location = new System.Drawing.Point(472, 69);
             this.btnEliminarTarjeta.Name = "btnEliminarTarjeta";
             this.btnEliminarTarjeta.Size = new System.Drawing.Size(123, 29);
             this.btnEliminarTarjeta.TabIndex = 14;
             this.btnEliminarTarjeta.Text = "Eliminar";
             this.btnEliminarTarjeta.UseVisualStyleBackColor = false;
-            // 
-            // btnModificarTarjeta
-            // 
-            this.btnModificarTarjeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificarTarjeta.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnModificarTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificarTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarTarjeta.Location = new System.Drawing.Point(472, 68);
-            this.btnModificarTarjeta.Name = "btnModificarTarjeta";
-            this.btnModificarTarjeta.Size = new System.Drawing.Size(123, 29);
-            this.btnModificarTarjeta.TabIndex = 13;
-            this.btnModificarTarjeta.Text = "Modificar";
-            this.btnModificarTarjeta.UseVisualStyleBackColor = false;
+            this.btnEliminarTarjeta.Click += new System.EventHandler(this.btnEliminarTarjeta_Click);
             // 
             // btnAgregarTarjeta
             // 
@@ -489,14 +476,38 @@
             this.btnAgregarTarjeta.TabIndex = 12;
             this.btnAgregarTarjeta.Text = "Agregar";
             this.btnAgregarTarjeta.UseVisualStyleBackColor = false;
+            this.btnAgregarTarjeta.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
             // dgvTarjetas
             // 
-            this.dgvTarjetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTarjetas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTarjetas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvTarjetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTarjetas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTarjetas.Location = new System.Drawing.Point(21, 34);
             this.dgvTarjetas.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvTarjetas.MultiSelect = false;
             this.dgvTarjetas.Name = "dgvTarjetas";
+            this.dgvTarjetas.ReadOnly = true;
+            this.dgvTarjetas.RowHeadersVisible = false;
+            this.dgvTarjetas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTarjetas.RowTemplate.Height = 28;
+            this.dgvTarjetas.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvTarjetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTarjetas.Size = new System.Drawing.Size(438, 122);
             this.dgvTarjetas.TabIndex = 0;
             // 
@@ -559,7 +570,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dgvTarjetas;
         private System.Windows.Forms.Button btnEliminarTarjeta;
-        private System.Windows.Forms.Button btnModificarTarjeta;
         private System.Windows.Forms.Button btnAgregarTarjeta;
     }
 }

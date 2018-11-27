@@ -4,6 +4,7 @@
 			<generator class="native" />
 		</id>
 		<property name="Activa" column="activa" not-null="true" />
+		<property name="ClienteId" column="clienteid" not-null="true" />
 		<property name="FechaVencimiento" column="fechavencimiento" not-null="true" />
 		<property name="NombreTitular" column="nombretitular" not-null="true" length="255" />
 		<property name="Numero" column="numero" not-null="true" />

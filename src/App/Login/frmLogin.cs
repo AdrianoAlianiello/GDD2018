@@ -54,12 +54,12 @@ namespace PalcoNet.Login
 
         private bool ValidateInputs()
         {
-            if(!Validator.ValidateNotEmpty(tbUsuario.Text))
+            if(!Validator.ValidateNotEmptyString(tbUsuario.Text))
             {
                 ShowMessage(MSG_LOGIN_USERNAME_REQUIRED);
                 return false;
             }
-            else if(!Validator.ValidateNotEmpty(tbContrasenia.Text))
+            else if(!Validator.ValidateNotEmptyString(tbContrasenia.Text))
             {
                 ShowMessage(MSG_LOGIN_PASSWORD_REQUIRED);
                 return false;

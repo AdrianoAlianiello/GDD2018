@@ -9,6 +9,7 @@ namespace Entities
 	{
 		private int _id;
 		private bool _activa;
+		private int _clienteId;
 		private DateTime _fechaVencimiento;
 		private string _nombreTitular;
 		private long _numero;
@@ -18,6 +19,12 @@ namespace Entities
 		{
 			get { return _activa; }
 			set { _activa = value; }
+		}
+		[DataMember]
+		public virtual int ClienteId
+		{
+			get { return _clienteId; }
+			set { _clienteId = value; }
 		}
 		[DataMember]
 		public virtual DateTime FechaVencimiento

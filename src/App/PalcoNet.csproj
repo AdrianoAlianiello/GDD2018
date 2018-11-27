@@ -50,11 +50,11 @@
     <Compile Include="Abm Cliente\ctrlCliente.Designer.cs">
       <DependentUpon>ctrlCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\Form1.cs">
+    <Compile Include="Abm Cliente\frmCreditCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Cliente\frmCreditCard.Designer.cs">
+      <DependentUpon>frmCreditCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Empresa Espectaculo\ctrlEmpresa.cs">
       <SubType>UserControl</SubType>
@@ -156,6 +156,9 @@
     </Compile>
     <EmbeddedResource Include="Abm Cliente\ctrlCliente.resx">
       <DependentUpon>ctrlCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Cliente\frmCreditCard.resx">
+      <DependentUpon>frmCreditCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Empresa Espectaculo\ctrlEmpresa.resx">
       <DependentUpon>ctrlEmpresa.cs</DependentUpon>

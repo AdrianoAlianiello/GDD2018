@@ -81,6 +81,11 @@ namespace PalcoNet
             formToOpen.Show();
         }
 
+        public void OpenDialogForm(Form formToOpen)
+        {
+            formToOpen.ShowDialog();
+        }
+
         private void ShowItemMenu(ToolStripMenuItem menu)
         {
             var parent = ((ToolStripDropDown)menu.GetCurrentParent()).OwnerItem;

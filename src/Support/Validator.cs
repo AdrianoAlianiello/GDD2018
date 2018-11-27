@@ -12,6 +12,13 @@ namespace Support
             return true;
         }
 
+        public static bool ValidateStringLength(string text, int length)
+        {
+            if (text.Length != length)
+                return false;
+            return true;
+        }
+
         public static bool ValidateNotEmptyDate(DateTime? value)
         {
             if (!value.HasValue)

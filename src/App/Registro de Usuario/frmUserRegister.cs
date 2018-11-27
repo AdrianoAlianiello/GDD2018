@@ -2,13 +2,8 @@
 using PalcoNet.Abm_Cliente;
 using Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Support.Constants.Configuration;
 
@@ -76,7 +71,7 @@ namespace PalcoNet.Registro_de_Usuario
 
         private void ShowClientForm()
         {
-            _ctrCliente = new ctrlCliente();
+            _ctrCliente = new ctrlCliente(_parent);
             container.Controls.Add(_ctrCliente);
         }
 
