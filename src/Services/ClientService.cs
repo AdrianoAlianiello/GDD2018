@@ -5,8 +5,8 @@ using Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Support.Constants.Messages;
 using static Support.Constants.Configuration;
+using static Support.Constants.Messages;
 
 namespace Services
 {
@@ -75,7 +75,7 @@ namespace Services
 
         public List<ClienteView> GetAll(ClienteFiltroDTO filters)
         {
-            return Context.Session.Query<Cliente>()
+            return GetBaseQuery(filters)
                 .OrderBy(c => c.Apellido).ThenBy(c => c.Nombre)
                 .ToList()
                 .Select(c => {
@@ -94,5 +94,21 @@ namespace Services
                 })
                 .ToList();
         }
+
+        private static IQueryable<Cliente> GetBaseQuery(ClienteFiltroDTO filters)
+        {
+            var query = Context.Session.Query<Cliente>();
+            if (!string.IsNullOrEmpty(filters.Nombre))
+                query = query.Where(c => c.Nombre.Contains(filters.Nombre));
+            if (!string.IsNullOrEmpty(filters.Apellido))
+                query = query.Where(c => c.Apellido.Contains(filters.Apellido));
+            if (!string.IsNullOrEmpty(filters.Dni))
+                query = query.Where(c => c.NroDocumento.ToString() == filters.Dni);
+            if (!string.IsNullOrEmpty(filters.Mail))
+                query = query.Where(c => c.Mail.Contains(filters.Mail));
+            return query;
+        }
+
+
     }
 }

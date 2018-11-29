@@ -116,12 +116,12 @@ namespace PalcoNet
 
         private void mainMenuClientesModificacion_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmListadoClientes());
+            OpenChildForm(new frmListadoClientes(this));
         }
 
         private void mainMenuClientesBaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new frmListadoClientes());
+            OpenChildForm(new frmListadoClientes(this));
         }
     }
 }
