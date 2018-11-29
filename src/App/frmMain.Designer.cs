@@ -39,11 +39,13 @@
             // 
             // mainMenu
             // 
+            this.mainMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenuClientes});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(904, 24);
+            this.mainMenu.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.mainMenu.Size = new System.Drawing.Size(1356, 35);
             this.mainMenu.TabIndex = 3;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -54,36 +56,37 @@
             this.mainMenuClientesModificacion,
             this.mainMenuClientesBaja});
             this.mainMenuClientes.Name = "mainMenuClientes";
-            this.mainMenuClientes.Size = new System.Drawing.Size(61, 20);
+            this.mainMenuClientes.Size = new System.Drawing.Size(85, 29);
             this.mainMenuClientes.Text = "Clientes";
             // 
             // mainMenuClientesAlta
             // 
             this.mainMenuClientesAlta.Name = "mainMenuClientesAlta";
-            this.mainMenuClientesAlta.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuClientesAlta.Size = new System.Drawing.Size(252, 30);
             this.mainMenuClientesAlta.Text = "Alta";
             // 
             // mainMenuClientesModificacion
             // 
             this.mainMenuClientesModificacion.Name = "mainMenuClientesModificacion";
-            this.mainMenuClientesModificacion.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuClientesModificacion.Size = new System.Drawing.Size(252, 30);
             this.mainMenuClientesModificacion.Text = "Modificación";
+            this.mainMenuClientesModificacion.Click += new System.EventHandler(this.mainMenuClientesModificacion_Click);
             // 
             // mainMenuClientesBaja
             // 
             this.mainMenuClientesBaja.Name = "mainMenuClientesBaja";
-            this.mainMenuClientesBaja.Size = new System.Drawing.Size(180, 22);
+            this.mainMenuClientesBaja.Size = new System.Drawing.Size(252, 30);
             this.mainMenuClientesBaja.Text = "Baja";
+            this.mainMenuClientesBaja.Click += new System.EventHandler(this.mainMenuClientesBaja_Click);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 347);
+            this.ClientSize = new System.Drawing.Size(1356, 534);
             this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";

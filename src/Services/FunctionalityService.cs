@@ -13,9 +13,10 @@ namespace Services
                 .Join(Context.Session.Query<Funcionalidad>(),
                       funcRol => funcRol.FuncionalidadId,
                       func => func.Id,
-                      (funcRol, func) => func)
-                .GroupBy(f => f.Detalle)
-                .Select(f => f.ElementAtOrDefault(0))
+                      (funcRol, func) => new { funcRol, func })
+                .Where(rf => rolesIds.Contains(rf.funcRol.RolId))
+                .GroupBy(rf => rf.func.Detalle)
+                .Select(rf => rf.ElementAtOrDefault(0).func)
                 .ToList();
         }
 

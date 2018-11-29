@@ -1,9 +1,12 @@
 ﻿using Entities;
 using Entities.DTOs;
+using Entities.Views;
 using Storage;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static Support.Constants.Messages;
+using static Support.Constants.Configuration;
 
 namespace Services
 {
@@ -56,7 +59,7 @@ namespace Services
                 VerifyIsExist(client.Cliente);
                 SaveClientAndCreditCards(client);
             }
-            catch (Exception ex)
+            catch
             {
                 throw new Exception(MSG_USER_REGISTRATION_ERROR_SAVING_CLIENT);
             }
@@ -68,6 +71,28 @@ namespace Services
             var exist = Context.Session.Query<Cliente>().Where(c => (c.TipoDocumento == cliente.TipoDocumento && c.NroDocumento == cliente.NroDocumento) || c.Cuil == cliente.Cuil).Count() != 0;
             if (exist)
                 throw new Exception(MSG_CLIENT_DUPLICATED);
+        }
+
+        public List<ClienteView> GetAll(ClienteFiltroDTO filters)
+        {
+            return Context.Session.Query<Cliente>()
+                .OrderBy(c => c.Apellido).ThenBy(c => c.Nombre)
+                .ToList()
+                .Select(c => {
+                    return new ClienteView()
+                    {
+                        Activo = c.Activo,
+                        Apellido = c.Apellido,
+                        Nombre = c.Nombre,
+                        Cuil = c.Cuil.ToString(),
+                        TipoDocumento = c.TipoDocumento,
+                        NumeroDocumento = c.NroDocumento.ToString(),
+                        Email = c.Mail,
+                        Id = c.Id,
+                        Estado = c.Activo ? CLIENT_ENABLED : CLIENT_DISABLED
+                    };
+                })
+                .ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PalcoNet.Login;
+﻿using PalcoNet.Abm_Cliente;
+using PalcoNet.Login;
 using Support;
 using System;
 using System.Linq;
@@ -113,5 +114,14 @@ namespace PalcoNet
             Close();
         }
 
+        private void mainMenuClientesModificacion_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmListadoClientes());
+        }
+
+        private void mainMenuClientesBaja_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmListadoClientes());
+        }
     }
 }

@@ -46,9 +46,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(50, 24);
+            this.label4.Location = new System.Drawing.Point(75, 36);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "Usuario";
             // 
@@ -56,9 +57,10 @@
             // 
             this.tbUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsuario.Location = new System.Drawing.Point(54, 44);
+            this.tbUsuario.Location = new System.Drawing.Point(81, 66);
+            this.tbUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUsuario.Name = "tbUsuario";
-            this.tbUsuario.Size = new System.Drawing.Size(177, 22);
+            this.tbUsuario.Size = new System.Drawing.Size(264, 30);
             this.tbUsuario.TabIndex = 5;
             // 
             // label1
@@ -67,9 +69,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 23);
+            this.label1.Location = new System.Drawing.Point(374, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.Size = new System.Drawing.Size(114, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Contraseña";
             // 
@@ -77,9 +80,10 @@
             // 
             this.tbContrasenia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbContrasenia.Location = new System.Drawing.Point(253, 43);
+            this.tbContrasenia.Location = new System.Drawing.Point(380, 64);
+            this.tbContrasenia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbContrasenia.Name = "tbContrasenia";
-            this.tbContrasenia.Size = new System.Drawing.Size(178, 22);
+            this.tbContrasenia.Size = new System.Drawing.Size(266, 30);
             this.tbContrasenia.TabIndex = 7;
             // 
             // cboRoles
@@ -87,9 +91,10 @@
             this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRoles.FormattingEnabled = true;
-            this.cboRoles.Location = new System.Drawing.Point(454, 43);
+            this.cboRoles.Location = new System.Drawing.Point(681, 64);
+            this.cboRoles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboRoles.Name = "cboRoles";
-            this.cboRoles.Size = new System.Drawing.Size(179, 24);
+            this.cboRoles.Size = new System.Drawing.Size(266, 33);
             this.cboRoles.TabIndex = 9;
             this.cboRoles.SelectedIndexChanged += new System.EventHandler(this.cboRoles_SelectedIndexChanged);
             // 
@@ -99,9 +104,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(451, 23);
+            this.label2.Location = new System.Drawing.Point(676, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 16);
+            this.label2.Size = new System.Drawing.Size(40, 25);
             this.label2.TabIndex = 10;
             this.label2.Text = "Rol";
             // 
@@ -112,9 +118,10 @@
             this.btnVolver.BackColor = System.Drawing.Color.Gainsboro;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(33, 629);
+            this.btnVolver.Location = new System.Drawing.Point(50, 944);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(0, 37);
+            this.btnVolver.Size = new System.Drawing.Size(19, 56);
             this.btnVolver.TabIndex = 11;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
@@ -122,10 +129,9 @@
             // 
             // container
             // 
-            this.container.Location = new System.Drawing.Point(16, 83);
-            this.container.Margin = new System.Windows.Forms.Padding(2);
+            this.container.Location = new System.Drawing.Point(24, 124);
             this.container.Name = "container";
-            this.container.Size = new System.Drawing.Size(653, 541);
+            this.container.Size = new System.Drawing.Size(980, 812);
             this.container.TabIndex = 12;
             // 
             // btnGuardar
@@ -135,9 +141,10 @@
             this.btnGuardar.BackColor = System.Drawing.Color.Gainsboro;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(523, 629);
+            this.btnGuardar.Location = new System.Drawing.Point(784, 944);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(123, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(203, 58);
             this.btnGuardar.TabIndex = 13;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -150,20 +157,21 @@
             this.button2.BackColor = System.Drawing.Color.Gainsboro;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(26, 629);
+            this.button2.Location = new System.Drawing.Point(39, 944);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 39);
+            this.button2.Size = new System.Drawing.Size(203, 58);
             this.button2.TabIndex = 14;
             this.button2.Text = "Volver";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // frmUserRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(677, 675);
+            this.ClientSize = new System.Drawing.Size(1029, 1006);
             this.ControlBox = false;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnGuardar);
@@ -176,6 +184,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmUserRegister";
             this.Opacity = 0D;
             this.ShowIcon = false;
