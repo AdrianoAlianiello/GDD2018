@@ -431,7 +431,7 @@ GO
 CREATE TABLE [dbo].[Pagos](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Fecha] [datetime] NULL,
-	[Total] [numeric](18,0) NOT NULL
+	[Total] [numeric](18,2) NOT NULL
  CONSTRAINT [PK_Pagos] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -800,96 +800,46 @@ VALUES
 ('Publicada');
 GO
 
+--Tabla Empresa
 
 
-declare @Razon_Social nvarchar(255), @Empresa_Cuit nvarchar(255), @Empresa_Mail nvarchar(255),
-@Dom_Calle nvarchar(255), @Nro_Calle numeric(18,0), @Piso numeric(18,0), @Depto nvarchar(255), 
-@Cod_Postal nvarchar(255), @Fecha_Creacion datetime
-
-declare cursor_Empresas cursor for 
-
-Select  distinct [Espec_Empresa_Razon_Social]
-      ,[Espec_Empresa_Cuit]
-      ,[Espec_Empresa_Mail]
-      ,[Espec_Empresa_Dom_Calle]
-      ,[Espec_Empresa_Nro_Calle]
-      ,[Espec_Empresa_Piso]
-      ,[Espec_Empresa_Depto]
-      ,[Espec_Empresa_Cod_Postal]
-      ,[Espec_Empresa_Fecha_Creacion]
-	  from gd_esquema.Maestra
-
-	  where Cli_Dni is null
-	  order by 1
-
-open cursor_Empresas
-Fetch cursor_Empresas Into
-@Razon_Social , @Empresa_Cuit , @Empresa_Mail ,
-@Dom_Calle , @Nro_Calle , @Piso , @Depto , 
-@Cod_Postal , @Fecha_Creacion
-
-While @@FETCH_STATUS = 0
-Begin
-	Insert into Empresas
-	(RazonSocial
-      ,Cuit
-      ,Mail
-      ,DomicilioCalle
-      ,DomicilioNro
-      ,DomicilioPiso
-      ,DomicilioDepto
-      ,DomicilioCodPostal
-      ,FechaCreacion
-	  ,Telefono)
-	  values(@Razon_Social , @Empresa_Cuit , @Empresa_Mail ,
-@Dom_Calle , @Nro_Calle , @Piso , @Depto , 
-@Cod_Postal , @Fecha_Creacion,null)
-Fetch next from cursor_Empresas Into
-@Razon_Social , @Empresa_Cuit , @Empresa_Mail ,
-@Dom_Calle , @Nro_Calle , @Piso , @Depto , 
-@Cod_Postal , @Fecha_Creacion
-End 
-
-Close cursor_Empresas
-Deallocate cursor_Empresas
+Insert into Empresas
+(RazonSocial
+    ,Cuit
+    ,Mail
+    ,DomicilioCalle
+    ,DomicilioNro
+    ,DomicilioPiso
+    ,DomicilioDepto
+    ,DomicilioCodPostal
+    ,FechaCreacion
+	,Telefono)
+(Select  distinct [Espec_Empresa_Razon_Social]
+    ,[Espec_Empresa_Cuit]
+    ,[Espec_Empresa_Mail]
+    ,[Espec_Empresa_Dom_Calle]
+    ,[Espec_Empresa_Nro_Calle]
+    ,[Espec_Empresa_Piso]
+    ,[Espec_Empresa_Depto]
+    ,[Espec_Empresa_Cod_Postal]
+    ,[Espec_Empresa_Fecha_Creacion]
+	,null
+	from gd_esquema.Maestra
+	where Cli_Dni is null)
+GO
 
 
-declare @Codigo numeric(18,0), @Descripcion nvarchar(255)
-
-declare cursor_Ubicacion_Tipo cursor for 
-
-Select  distinct [Ubicacion_Tipo_Codigo], [Ubicacion_Tipo_Descripcion]
-	  from gd_esquema.Maestra
-
-	  where Cli_Dni is null
-	  order by 1
-
-open cursor_Ubicacion_Tipo
-Fetch cursor_Ubicacion_Tipo Into
-@Codigo, @Descripcion
-
-While @@FETCH_STATUS = 0
-Begin
-	Insert into UbicacionesTipos
+Insert into UbicacionesTipos
 	(Codigo, Descripcion)
-	  values(@Codigo, @Descripcion)
-Fetch next from cursor_Ubicacion_Tipo Into
-@Codigo, @Descripcion
-End 
+(Select  distinct [Ubicacion_Tipo_Codigo], [Ubicacion_Tipo_Descripcion]
+	  from gd_esquema.Maestra
+	  where Cli_Dni is null)
+Go
 
-Close cursor_Ubicacion_Tipo
-Deallocate cursor_Ubicacion_Tipo
-
-
-declare 
-@Nombre nvarchar(255), @Apellido nvarchar(255),
-@NroDocumento numeric(18,0), @Mail nvarchar(255), @DomicilioCalle nvarchar(255), 
-@DomicilioNro numeric(18,0), @DomicilioPiso numeric(18,0), @DomicilioDepto nvarchar(255), 
-@DomicilioCodPostal nvarchar(255), @FechaNacimiento datetime
-
-declare cursor_Cliente cursor for 
-
-Select  distinct 
+		Insert into Clientes
+	(Nombre, Apellido, NroDocumento, Mail, DomicilioCalle,  DomicilioNro, DomicilioPiso, 
+	DomicilioDepto, DomicilioCodPostal, FechaNacimiento, TipoDocumento, FechaCreacion, Activo)
+	  (Select  distinct 
       [Cli_Nombre]
       ,[Cli_Apeliido]
       ,[Cli_Dni] 
@@ -900,179 +850,143 @@ Select  distinct
       ,[Cli_Depto]
       ,[Cli_Cod_Postal]
       ,[Cli_Fecha_Nac]
+	  , 'DNI'
+	  , getdate()
+	  , 1
 	  from gd_esquema.Maestra
 
-	  where Cli_Dni is not null
-	  order by 1
-
-open cursor_Cliente
-Fetch cursor_Cliente Into
-@Nombre, @Apellido, @NroDocumento, @Mail, @DomicilioCalle, 
-@DomicilioNro, @DomicilioPiso,@DomicilioDepto, @DomicilioCodPostal, @FechaNacimiento
-
-While @@FETCH_STATUS = 0
-Begin
-	Insert into Clientes
-	(Nombre, Apellido, NroDocumento, Mail, DomicilioCalle,  DomicilioNro, DomicilioPiso, 
-	DomicilioDepto, DomicilioCodPostal, FechaNacimiento, TipoDocumento, FechaCreacion, Activo)
-	  values(
-@Nombre, @Apellido, @NroDocumento, @Mail, @DomicilioCalle, @DomicilioNro, @DomicilioPiso,
-@DomicilioDepto, @DomicilioCodPostal, @FechaNacimiento, 'DNI', getdate(), 1)
-Fetch next from cursor_Cliente Into
-@Nombre, @Apellido, @NroDocumento, @Mail, @DomicilioCalle, 
-@DomicilioNro, @DomicilioPiso,@DomicilioDepto, @DomicilioCodPostal, @FechaNacimiento
-End 
-
-Close cursor_Cliente
-Deallocate cursor_Cliente
+	  where Cli_Dni is not null)
+GO
 
 
-declare @Espectaculo_Descripcion nvarchar(255), @Empresa_Cuit nvarchar(255), 
-@Espectaculo_Fecha datetime, @idInsertadaEspectaculos int, @idInsertadaPublicacion int,
-@idInsertadaUbicacion int, @IdCliente int, @CompraRendida bit, @FechaCompra datetime,
-@Fila varchar(3), @Asiento numeric(18,0), @Precio numeric(18,0), @Numerada bit, @TipoId int,
-@IdCompra int, @Codigo numeric(18,0), @Descripcion nvarchar(255), @FechaVenc datetime, 
-@EstadoId Int, @EspectaculoHorarioId Int, @EmpresaId Int, @Fecha datetime, @idFactura int,
-@NombreCliente varchar(255), @ApellidoCliente varchar(255), @Factura_Total numeric(18,2),
-@IFMonto numeric(18,0), @FactFecha datetime, @FactNumero numeric(18,0), @idPago int, @idEntrada int
+	  Insert into Espectaculos
+	  (Descripcion)
+	  (select distinct 
+	 [Espectaculo_Descripcion]
+	  from gd_esquema.Maestra m)
+GO
 
-declare cursor_Espectaculos cursor for 
-select distinct [Ubicacion_Fila]
-      ,[Ubicacion_Asiento]
-      ,[Ubicacion_Sin_numerar]
-      ,[Ubicacion_Precio]
-      ,ut.Id
-	  ,[Espectaculo_Descripcion]
-      ,[Espec_Empresa_Cuit]
-      ,[Espectaculo_Fecha]
-	  from gd_esquema.Maestra m
-	  join UbicacionesTipos ut on m.Ubicacion_Tipo_Codigo = ut.Codigo
-	  where Cli_Dni is null
-	  order by 1
 
-open cursor_Espectaculos
-Fetch cursor_Espectaculos Into
-@Fila, @Asiento, @Precio, @Numerada, @TipoId,
-@Espectaculo_Descripcion, @Empresa_Cuit, @Espectaculo_Fecha
+	Insert into EspectaculosHorarios
+	(Fecha, EspectaculoId)
+	Select distinct [Espectaculo_Fecha], e.Id
+	from gd_esquema.Maestra m
+	join Espectaculos e on e.Descripcion = m. Espectaculo_Descripcion
 
-While @@FETCH_STATUS = 0
-Begin
+GO
 
+Insert into Publicaciones
+	(Codigo, Descripcion, FechaInicio, 
+	EstadoId, EspectaculoHorarioId, EmpresaId)
 Select  distinct 
-		@Codigo = [Espectaculo_Cod]
-      ,@Descripcion = [Espectaculo_Descripcion]
-      ,@FechaVenc = [Espectaculo_Fecha_Venc]
-	  ,@Fecha = Espectaculo_Fecha
-	  ,@EstadoId = ep.Id
-	  ,@EmpresaId = e.Id 
+	 [Espectaculo_Cod]
+    ,[Espectaculo_Descripcion]
+	,[Espectaculo_Fecha_Venc]
+	,ep.Id
+	,eh.Id
+	,e.Id 
 	  from gd_esquema.Maestra m
 	  join EstadosPublicaciones ep on ep.Descripcion = 'Publicada'
 	  Join Empresas e on e.RazonSocial = m.Espec_Empresa_Razon_Social and e.Cuit = m.Espec_Empresa_Cuit
-	  where Cli_Dni is null and m.Espectaculo_Descripcion = @Espectaculo_Descripcion
+	  join Espectaculos  esp on m.Espectaculo_Descripcion = esp.Descripcion
+	  join EspectaculosHorarios eh on eh.Fecha = m.Espectaculo_Fecha and eh.EspectaculoId = esp.Id 
+	  where Cli_Dni is null
+GO
 
-			
-	  Insert into Espectaculos
-	  (Descripcion)
-	  values(@Espectaculo_Descripcion)
+Insert into Ubicaciones
+	(Fila, Asiento, Precio, Numerada, TipoId, CantPuntos)
+select distinct [Ubicacion_Fila]
+    ,[Ubicacion_Asiento]
+    ,[Ubicacion_Precio]
+    ,case when [Ubicacion_Sin_numerar] = 0 then 1 else 0 end
+    ,ut.Id
+	,null
+	from gd_esquema.Maestra m
+	join UbicacionesTipos ut on m.Ubicacion_Tipo_Codigo = ut.Codigo
+	where Cli_Dni is null
+GO
 
-	  set @idInsertadaEspectaculos=@@IDENTITY
+Insert into UbicacionesEspectaculos
+	(EspectaculoId, UbicacionId)
+Select 
+	e.id
+	,u.id
+	from gd_esquema.Maestra m
+	join Espectaculos e on e.Descripcion = m.Espectaculo_Descripcion
+	join Ubicaciones u on u.Asiento = m.Ubicacion_Asiento and u.Fila = m.Ubicacion_Fila and not u.Numerada = m.Ubicacion_Sin_numerar and u.Precio = m.Ubicacion_Precio 
+	join UbicacionesTipos ut on ut.Id = u.TipoId and ut.Descripcion = m.Ubicacion_Tipo_Descripcion 
+		  
+GO
 
-	  Insert into EspectaculosHorarios
-	  (Fecha, EspectaculoId)
-	  values(@Espectaculo_Fecha,@idInsertadaEspectaculos)
-	 set @EspectaculoHorarioId = @@IDENTITY
+insert into Compras
+	(Fecha, Rendida, ClienteId)
+Select distinct
+	Compra_Fecha
+	,case when Item_Factura_Descripcion is null then 0 else 1 end
+	,c.Id
+	from gd_esquema.Maestra m
+	join Clientes c on c.NroDocumento = m.Cli_Dni
+GO
 
-			Insert into Publicaciones
-		(Codigo, Descripcion, FechaInicio, 
-	EstadoId, EspectaculoHorarioId, EmpresaId)
-			values(@Codigo, @Descripcion, @FechaVenc, 
-	@EstadoId, @EspectaculoHorarioId, @EmpresaId)
+insert into Entradas
+	(Apellido, Nombre, UbicacionId, CompraId, PublicacionId, EspectaculoId)  
+ (Select distinct
+	m.Cli_Apeliido
+	,m.Cli_Nombre 
+	,u.Id
+	,com.Id
+	,p.Id
+	,e.Id
+	from gd_esquema.Maestra m
+	join Espectaculos e on e.Descripcion = m.Espectaculo_Descripcion
+	join Ubicaciones u on u.Asiento = m.Ubicacion_Asiento and u.Fila = m.Ubicacion_Fila and not u.Numerada = m.Ubicacion_Sin_numerar and u.Precio = m.Ubicacion_Precio 
+	join UbicacionesTipos ut on ut.Id = u.TipoId and ut.Descripcion = m.Ubicacion_Tipo_Descripcion 
+	join Clientes c on c.NroDocumento = m.Cli_Dni
+	Join Empresas emp on emp.RazonSocial = m.Espec_Empresa_Razon_Social and emp.Cuit = m.Espec_Empresa_Cuit
+	join Compras com on com.ClienteId = c.Id and com.Fecha = m. Compra_Fecha
+	join EspectaculosHorarios eh on eh.Fecha = m.Espectaculo_Fecha and eh.EspectaculoId = e.Id
+	join Publicaciones p on eh.Id = p.EspectaculoHorarioId  and p.EmpresaId = emp.Id and p.Codigo = [Espectaculo_Cod] and p.Descripcion = m.[Espectaculo_Descripcion])
+GO
 
-	  set @idInsertadaPublicacion=@@IDENTITY
+Insert into Pagos
+	(Total,Fecha)
+(Select distinct [Factura_Total]
+    ,[Factura_Fecha]
+	FROM [GD2C2018].[gd_esquema].[Maestra] maestra
+	where Item_Factura_Descripcion is not null)
+GO
 
-
-	  IF not exists(
-	  Select * from Ubicaciones 
-	  where Fila =@Fila AND  Asiento= @Asiento AND 
-	  Precio = @Precio and  Numerada = @Numerada And 
-	  Numerada = @Numerada)
-	  Begin
-		  Insert into Ubicaciones
-		  (Fila, Asiento, Precio, Numerada, TipoId, CantPuntos)
-		  values(@Fila, @Asiento, @Precio, @Numerada, @TipoId, null)
-	   
-	   set @idInsertadaUbicacion = @@IDENTITY
-
-		  Insert into UbicacionesEspectaculos
-		  (EspectaculoId, UbicacionId)
-		  values (@idInsertadaEspectaculos,  @idInsertadaUbicacion)
-	  End
-	  else
-	  begin
-		  Select @idInsertadaUbicacion = Id from Ubicaciones 
-		  where Fila =@Fila AND  Asiento= @Asiento AND 
-		  Precio = @Precio and  Numerada = @Numerada And 
-		  Numerada = @Numerada
-	  end
-
-	  Select @IdCliente = c.Id,
-	  @FechaCompra = Compra_Fecha,
-	  @CompraRendida = case when Item_Factura_Descripcion is null then 0 else 1 end,
-	  @NombreCliente = c.Nombre,
-	  @ApellidoCliente = c.Apellido
-	   from gd_esquema.Maestra m
-	   join Clientes c on c.NroDocumento = m.Cli_Dni
-
-	   insert into Compras
-	   (Fecha, Rendida, ClienteId)
-	   values
-	   (@FechaCompra, @CompraRendida, @IdCliente)
-	   
-	   set @IdCompra = @@IDENTITY
-
-	   insert into Entradas
-	   (Apellido, Nombre, UbicacionId, CompraId, PublicacionId, EspectaculoId)
-	   values
-	   (@ApellidoCliente, @NombreCliente, @idInsertadaUbicacion, @IdCompra, @idInsertadaPublicacion, @idInsertadaEspectaculos)
-
-	   set @idEntrada = @@IDENTITY
-	   
-	   Select distinct @IFMonto=[Item_Factura_Monto]
-	  ,@Factura_Total = [Factura_Total]
-      ,@FactFecha=[Factura_Fecha]
-      ,@FactNumero=[Factura_Nro]
-	  FROM [GD2C2018].[gd_esquema].[Maestra] maestra
-	  where Item_Factura_Descripcion is not null
-	  
-	Insert into Pagos
-	 (Total,Fecha)
-	 values
-	 (@Factura_Total,@FactFecha)
-
-	 set @idPago = @@IDENTITY
-	
 	Insert into Facturas
 	 (Fecha,Numero,EmpresaId,PagoId,Valida)
-	 values
-	 (@FactFecha,@FactNumero,@EmpresaId,@idPago,1)
-
-	 set @idFactura = @@IDENTITY
-
-	 insert into DetallesFacturas
-	 (PrecioEntrada, PrecioComision, FacturaId, EntradaId)
-	 values
-	 (@Precio, @IFMonto, @idFactura, @idEntrada)
-
-
-
-Fetch next from cursor_Espectaculos Into
-@Fila, @Asiento, @Precio, @Numerada, @TipoId,
-@Espectaculo_Descripcion, @Empresa_Cuit, @Espectaculo_Fecha
-End 
-
-Close cursor_Espectaculos
-Deallocate cursor_Espectaculos
+	(Select distinct [Factura_Fecha]
+    ,[Factura_Nro]
+	,e.Id
+	,p.Id
+	,1
+	FROM [GD2C2018].[gd_esquema].[Maestra] m
+	join Pagos p on p.Fecha = Factura_Fecha and p.Total = Factura_Total
+	join Empresas e on m.Espec_Empresa_Razon_Social = e.RazonSocial)
+Go
 
 
-
-
+insert into DetallesFacturas
+	(PrecioEntrada, PrecioComision, FacturaId, EntradaId)
+(Select distinct 
+	[Ubicacion_Precio]
+	,[Item_Factura_Monto]
+	,f.Id
+	, ent.Id
+	FROM [GD2C2018].[gd_esquema].[Maestra] m
+	join Pagos p on p.Fecha = Factura_Fecha and p.Total = Factura_Total
+	join Empresas emp on m.Espec_Empresa_Razon_Social = emp.RazonSocial
+	join Facturas f on f.EmpresaId = emp.Id and f.PagoId = p.Id and f.Numero = m.Factura_Nro and f.Fecha = m.[Factura_Fecha]
+	join Espectaculos e on e.Descripcion = m.Espectaculo_Descripcion
+	join Ubicaciones u on u.Asiento = m.Ubicacion_Asiento and u.Fila = m.Ubicacion_Fila and not u.Numerada = m.Ubicacion_Sin_numerar and u.Precio = m.Ubicacion_Precio 
+	join UbicacionesTipos ut on ut.Id = u.TipoId and ut.Descripcion = m.Ubicacion_Tipo_Descripcion 
+	join Clientes c on c.NroDocumento = m.Cli_Dni
+	join Compras com on com.ClienteId = c.Id and com.Fecha = m. Compra_Fecha
+	join EspectaculosHorarios eh on eh.Fecha = m.Espectaculo_Fecha and eh.EspectaculoId = e.Id
+	join Publicaciones pu on eh.Id = pu.EspectaculoHorarioId  and pu.EmpresaId = emp.Id and pu.Codigo = [Espectaculo_Cod] and pu.Descripcion = m.[Espectaculo_Descripcion]
+	join Entradas ent on ent.Apellido = m.Cli_Apeliido and ent.Nombre = m.Cli_Nombre and ent.CompraId = com.Id and ent.EspectaculoId = e.Id and  ent.PublicacionId = p.Id and ent.UbicacionId = u.Id
+	where Item_Factura_Descripcion is not null)
+go
