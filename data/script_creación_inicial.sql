@@ -987,6 +987,6 @@ insert into DetallesFacturas
 	join Compras com on com.ClienteId = c.Id and com.Fecha = m. Compra_Fecha
 	join EspectaculosHorarios eh on eh.Fecha = m.Espectaculo_Fecha and eh.EspectaculoId = e.Id
 	join Publicaciones pu on eh.Id = pu.EspectaculoHorarioId  and pu.EmpresaId = emp.Id and pu.Codigo = [Espectaculo_Cod] and pu.Descripcion = m.[Espectaculo_Descripcion]
-	join Entradas ent on ent.Apellido = m.Cli_Apeliido and ent.Nombre = m.Cli_Nombre and ent.CompraId = com.Id and ent.EspectaculoId = e.Id and  ent.PublicacionId = p.Id and ent.UbicacionId = u.Id
+	join Entradas ent on ent.Apellido = m.Cli_Apeliido and ent.Nombre = m.Cli_Nombre and ent.CompraId = com.Id and ent.EspectaculoId = e.Id and  ent.PublicacionId = pu.Id and ent.UbicacionId = u.Id
 	where Item_Factura_Descripcion is not null)
 go
