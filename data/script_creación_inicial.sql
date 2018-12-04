@@ -484,7 +484,7 @@ CREATE TABLE [dbo].[Facturas](
 	[Numero] [numeric](18,0) NOT NULL,
 	[EmpresaId] [int] NOT NULL,
 	[PagoId] [int] NULL,
-	[Valida] [bit] NOT NULL,
+	[Valida] [bit] NOT NULL default 1,
  CONSTRAINT [PK_Facturas] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
