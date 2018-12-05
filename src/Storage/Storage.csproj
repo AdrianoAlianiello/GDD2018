@@ -91,5 +91,10 @@
     <EmbeddedResource Include="Mappings\TarjetaCredito.hbm.xml" />
     <EmbeddedResource Include="Mappings\TipoTarjetaCredito.hbm.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mappings\EstadoPublicacion.xml" />
+    <Content Include="Mappings\GradoPublicacion.xml" />
+    <Content Include="Mappings\Publicacion.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

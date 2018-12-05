@@ -1,0 +1,15 @@
+﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Entities" assembly="Entities">
+  <class name="Publicacion" table="Publicaciones" lazy="false">
+    <id name="Id" column="Id" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Codigo" column="codigo" not-null="true" />
+    <property name="Descripcion" column="descripcion" not-null="true" length="255" />
+    <property name="FechaInicio" column="fechaInicio" not-null="true" />
+    <property name="EstadoId" column="estadoId" not-null="true" />
+    <property name="GradoId" column="gradoId" not-null="false" />
+    <property name="UsuarioId" column="usuarioId" not-null="false" />
+    <property name="EspectaculoHorarioId" column="espectaculoHorarioId" not-null="true" />
+    <property name="EmpresaId" column="empresaId" not-null="true" />
+  </class>
+</hibernate-mapping>

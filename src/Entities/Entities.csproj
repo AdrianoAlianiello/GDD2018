@@ -50,11 +50,17 @@
     <Compile Include="DTOs\TarjetaCreditoDTO.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="EmpresaBase.cs" />
+    <Compile Include="EstadoPublicacion.cs" />
+    <Compile Include="EstadoPublicacionBase.cs" />
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="FuncionalidadBase.cs" />
     <Compile Include="FuncionalidadRol.cs" />
     <Compile Include="FuncionalidadRolBase.cs" />
+    <Compile Include="GradoPublicacion.cs" />
+    <Compile Include="GradoPublicacionBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publicacion.cs" />
+    <Compile Include="PublicacionBase.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="RolBase.cs" />
     <Compile Include="RolUsuario.cs" />
